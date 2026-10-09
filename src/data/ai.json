@@ -1,0 +1,49 @@
+{
+  "intro": "AI engineer interviews ask how I'd build, debug and measure LLM products: RAG that gives wrong answers, evals, agents versus workflows, cost and latency, prompt injection. So I learn top-down, starting from what I already use at work and going one layer down each week.",
+  "spine": [
+    { "kind": "Video", "title": "Deep Dive into LLMs like ChatGPT", "by": "Andrej Karpathy", "note": "About 3.5 hours, watched once over four sittings.", "url": "https://karpathy.ai/zero-to-hero.html" },
+    { "kind": "Book", "title": "AI Engineering", "by": "Chip Huyen", "note": "Read in order, one chapter section per session.", "url": "https://www.oreilly.com/library/view/ai-engineering/9781098166298/" },
+    { "kind": "Project", "title": "Search over my study notes", "by": "Me", "note": "Grows every month and is measured with a test set.", "url": null }
+  ],
+  "path": [
+    {
+      "from": "2026-10-12", "to": "2026-10-25",
+      "learn": "Karpathy's deep dive + AI Engineering ch. 1",
+      "build": "A Python script that calls an LLM and counts tokens and cost on my own chats",
+      "question": "What is a token, and why does a longer context cost more and run slower?",
+      "status": "current"
+    },
+    {
+      "from": "2026-10-26", "to": "2026-11-08",
+      "learn": "Ch. 2: how models pick words, structured output",
+      "build": "Make the LLM return strict JSON, with retries when it breaks",
+      "question": "How do you make LLM output reliable?",
+      "status": "next"
+    },
+    {
+      "from": "2026-11-09", "to": "2026-11-22",
+      "learn": "The RAG half of ch. 6",
+      "build": "Embed my notes; search with plain numpy first, then pgvector",
+      "question": "Walk me through a RAG pipeline.",
+      "status": "next"
+    },
+    {
+      "from": "2026-11-23", "to": "2026-12-06",
+      "learn": "Ch. 3–4: evaluation",
+      "build": "30 test questions; measure how often the right note is in the top 5; try chunk sizes, keyword + vector search, a reranker",
+      "question": "The answer is wrong but the document exists. Where's the bug?",
+      "status": "next"
+    },
+    {
+      "from": "2026-12-07", "to": "2026-12-31",
+      "learn": "Write it up",
+      "build": "README with my numbers, and one X thread",
+      "question": "Tell me about something you built and how you know it works.",
+      "status": "next"
+    }
+  ],
+  "skipped": [
+    { "what": "Kaggle", "why": "It trains data-science skills (tabular models, competitions). That's a different job from building LLM products." },
+    { "what": "Starting with backprop", "why": "Useful depth, but rarely asked for AI engineer roles. It moves to phase 2 as optional." }
+  ]
+}

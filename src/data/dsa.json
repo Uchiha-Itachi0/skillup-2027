@@ -1,0 +1,64 @@
+{
+  "groups": [
+    { "name": "Arrays & hashing", "phase": 1, "problems": [
+      { "name": "Contains Duplicate", "url": "https://leetcode.com/problems/contains-duplicate/" },
+      { "name": "Valid Anagram", "url": "https://leetcode.com/problems/valid-anagram/" },
+      { "name": "Two Sum", "url": "https://leetcode.com/problems/two-sum/" },
+      { "name": "Group Anagrams", "url": "https://leetcode.com/problems/group-anagrams/" },
+      { "name": "Top K Frequent Elements", "url": "https://leetcode.com/problems/top-k-frequent-elements/" },
+      { "name": "Encode and Decode Strings", "url": "https://neetcode.io/problems/string-encode-and-decode" },
+      { "name": "Product of Array Except Self", "url": "https://leetcode.com/problems/product-of-array-except-self/" },
+      { "name": "Valid Sudoku", "url": "https://leetcode.com/problems/valid-sudoku/" },
+      { "name": "Longest Consecutive Sequence", "url": "https://leetcode.com/problems/longest-consecutive-sequence/" }
+    ]},
+    { "name": "Two pointers", "phase": 1, "count": 5 },
+    { "name": "Sliding window", "phase": 1, "count": 6 },
+    { "name": "Stack", "phase": 1, "count": 7 },
+    { "name": "Binary search", "phase": 1, "count": 7 },
+    { "name": "Linked list", "phase": 1, "count": 11 },
+    { "name": "Trees", "phase": 2, "count": 15 },
+    { "name": "Tries", "phase": 2, "count": 3 },
+    { "name": "Heap / priority queue", "phase": 2, "count": 7 },
+    { "name": "Backtracking", "phase": 2, "count": 9 },
+    { "name": "Graphs", "phase": 2, "count": 13 },
+    { "name": "Intervals", "phase": 2, "count": 6 },
+    { "name": "Greedy", "phase": 2, "count": 8 },
+    { "name": "Advanced graphs", "phase": 3, "count": 6 },
+    { "name": "1-D dynamic programming", "phase": 3, "count": 12 },
+    { "name": "2-D dynamic programming", "phase": 3, "count": 11 },
+    { "name": "Bit manipulation", "phase": 3, "count": 7 },
+    { "name": "Math & geometry", "phase": 3, "count": 8 }
+  ],
+  "log": [
+    {
+      "name": "Contains Duplicate",
+      "group": "Arrays & hashing",
+      "url": "https://leetcode.com/problems/contains-duplicate/",
+      "solved": "2026-10-08",
+      "minutes": 3,
+      "hints": "none",
+      "pattern": "use set as searching is O(1)",
+      "resolves": { "d1": null, "d3": null, "d7": null, "d21": null }
+    },
+    {
+      "name": "Valid Anagram",
+      "group": "Arrays & hashing",
+      "url": "https://leetcode.com/problems/valid-anagram/",
+      "solved": "2026-10-08",
+      "minutes": 5,
+      "hints": "none",
+      "pattern": "need to count letters → frequency → dict, lookup O(1)",
+      "resolves": { "d1": null, "d3": null, "d7": null, "d21": null }
+    },
+    {
+      "name": "Two Sum",
+      "group": "Arrays & hashing",
+      "url": "https://leetcode.com/problems/two-sum/",
+      "solved": "2026-10-08",
+      "minutes": null,
+      "hints": "none",
+      "pattern": "a = b + c so c = a - b (complement = target - value), dict value→index",
+      "resolves": { "d1": "pass", "d3": null, "d7": null, "d21": null }
+    }
+  ]
+}

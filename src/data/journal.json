@@ -1,0 +1,26 @@
+[
+  {
+    "date": "2026-10-09",
+    "track": "ai",
+    "title": "Learning AI top-down",
+    "body": "I already build with LLMs, so starting from scratch felt like a waste. The plan now is one video, one book and one project I can measure. Kaggle is out: it trains a different job."
+  },
+  {
+    "date": "2026-10-09",
+    "track": "dsa",
+    "title": "Check before write",
+    "body": "In one-pass Two Sum, I look up the complement before adding the current number. So the dictionary only ever holds earlier indices, and the same index can't pair with itself. Overwriting a duplicate value is safe too: if the duplicates were the answer, I'd have returned already."
+  },
+  {
+    "date": "2026-10-08",
+    "track": "dsa",
+    "title": "A fixed alphabet means O(1) space",
+    "body": "Valid Anagram counts letters in a dictionary. I said the space was O(n), but with 26 lowercase letters the dictionary never grows past 26 keys, so it's O(1). With any Unicode text it becomes O(k), for k distinct characters."
+  },
+  {
+    "date": "2026-10-08",
+    "track": "dsa",
+    "title": "A set answers 'have I seen this?' in O(1)",
+    "body": "Contains Duplicate: walk the list once, keep a set, return on the first repeat. Worst case the set holds n items, so O(n) space. Sorting first gets the space to O(1) but the time goes up to O(n log n)."
+  }
+]

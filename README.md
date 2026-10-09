@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Skill-up 2027
 
-## Getting Started
+My public learning tracker: DSA, databases and system design, and AI engineering, from October 2026 to December 2027. The goal is to pass interviews without AI help.
 
-First, run the development server:
+Built with Next.js. Every page reads from the JSON files in `src/data/`, so updating the site means editing data, not code.
+
+## Data files
+
+| File | What it holds | Update when |
+| --- | --- | --- |
+| `log.json` | One entry per thing done: `problem`, `resolve`, `theory`, `post`, `anki`, `mock`. Drives the heatmap, streak and weekly score. | Every learning session |
+| `dsa.json` → `log` | Each problem solved: date, minutes, hints, my pattern line, re-solve results (`"pass"`, `"fail"` or `null`) for d1/d3/d7/d21 | A new problem or a re-solve |
+| `dsa.json` → `groups` | NeetCode 150 groups; the current group lists its problems by name | Starting a new group: replace `count` with its `problems` list |
+| `journal.json` | Notes on what clicked, newest first. Track is `dsa`, `systems`, `ai` or `plan`. | Something makes sense |
+| `ai.json` | The AI path: blocks with `status` `done` / `current` / `next` | A block finishes |
+| `plan.json` | Phases, track stops (`done` / `current` / `next`) on the map, rules, job gates | A topic finishes |
+| `profile.json` | Name, links, start and goal dates | Rarely |
+
+Dates are `YYYY-MM-DD` in India time. A failed re-solve restarts that problem: set `solved` to the fail date and clear its re-solves.
+
+Pages revalidate every hour, so "due today" stays correct between deploys. Pushing to `main` redeploys on Vercel.
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

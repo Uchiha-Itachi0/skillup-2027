@@ -1,0 +1,383 @@
+{
+  "phases": [
+    {
+      "id": 1,
+      "name": "Foundations",
+      "start": "2026-10-08",
+      "end": "2026-12-31",
+      "goal": "Easy problems in 15 minutes and array/string mediums in 35, with no AI. About 45 problems plus their re-solves.",
+      "project": "Search over my own study notes, with a 30-question test set that checks whether the right note comes back in the top 5.",
+      "tracks": [
+        {
+          "track": "dsa",
+          "topics": "Python toolkit, Big-O, arrays and hashing, two pointers, sliding window, stack, binary search, linked list",
+          "where": "NeetCode 150 and its free videos; Striver A2Z articles for theory",
+          "doneWhen": "All problems in these 7 groups solved and re-solved once"
+        },
+        {
+          "track": "systems",
+          "topics": "SQL I use daily: joins, GROUP BY, subqueries, window functions, what an index does",
+          "where": "LeetCode SQL 50",
+          "doneWhen": "30 SQL problems; can explain why a query is slow"
+        },
+        {
+          "track": "ai",
+          "topics": "How LLMs work (tokens, context, sampling), reliable output, embeddings and retrieval, evals",
+          "where": "Karpathy, Deep Dive into LLMs like ChatGPT; AI Engineering ch. 1–4 and the RAG half of ch. 6",
+          "doneWhen": "I can show my retrieval eval number and explain what moved it"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Core",
+      "start": "2027-01-01",
+      "end": "2027-04-30",
+      "goal": "Finish all 150 NeetCode problems and understand how a database and an LLM app work inside. First mock interview at the end of April.",
+      "project": "An agent over my notes with tools, traces and an eval, plus a prompt-injection test.",
+      "tracks": [
+        {
+          "track": "dsa",
+          "topics": "Trees, tries, heaps, backtracking, graphs (BFS, DFS, topological sort, union find), intervals, greedy",
+          "where": "NeetCode 150, the remaining ~105",
+          "doneWhen": "NeetCode 150 complete; tree or graph medium in 40 min"
+        },
+        {
+          "track": "systems",
+          "topics": "Storage, B+tree indexes, hash tables, transactions and isolation levels, logging and recovery",
+          "where": "CMU 15-445 lectures; DDIA 2nd ed. part 1",
+          "doneWhen": "I can explain an index and the 4 isolation levels without notes"
+        },
+        {
+          "track": "ai",
+          "topics": "Agents and tool use, prompting, guardrails and prompt injection, cost and latency; transformers one layer down",
+          "where": "AI Engineering ch. 5, agent half of ch. 6, ch. 9; Karpathy micrograd and Let's build GPT for depth",
+          "doneWhen": "I can design an agent, say when a plain workflow beats it, and show its eval"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Interview-ready",
+      "start": "2027-05-01",
+      "end": "2027-08-31",
+      "goal": "Pass a full mock loop (DSA, system design, AI) by the end of August.",
+      "project": "A key-value store in Python with a write-ahead log and an index.",
+      "tracks": [
+        {
+          "track": "dsa",
+          "topics": "1-D DP, 2-D DP, Dijkstra and advanced graphs, bit manipulation, math; mixed mediums under a timer",
+          "where": "NeetCode list; 2 LeetCode weekly contests a month",
+          "doneWhen": "Medium in 30 min, mixed topics, timer on"
+        },
+        {
+          "track": "systems",
+          "topics": "Delivery framework, caching, sharding, queues, consistency; one design a week",
+          "where": "Hello Interview, System Design in a Hurry; DDIA 2nd ed. part 2",
+          "doneWhen": "A 45-minute design done out loud, end to end"
+        },
+        {
+          "track": "ai",
+          "topics": "Fine-tuning, dataset work, inference cost and speed, AI app architecture",
+          "where": "AI Engineering ch. 7–10",
+          "doneWhen": "I can design an AI feature with its eval and cost plan"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Depth and offers",
+      "start": "2027-09-01",
+      "end": "2027-12-31",
+      "goal": "Interview at my best and close a well-paid offer. Fixing weak spots, not new topics.",
+      "project": "A LoRA fine-tune of a small open model, with an eval and a short write-up.",
+      "tracks": [
+        {
+          "track": "dsa",
+          "topics": "My 3 weakest patterns, timed mixed sets, a few hards",
+          "where": "My own re-solve log; company-tagged problems",
+          "doneWhen": "4 of 5 mixed mediums solved in time"
+        },
+        {
+          "track": "systems",
+          "topics": "Full mock loops; object-oriented design in Python (LRU cache, parking lot, rate limiter)",
+          "where": "Hello Interview question breakdowns",
+          "doneWhen": "Weekly mock scores 4/5 or better"
+        },
+        {
+          "track": "ai",
+          "topics": "Fine-tune a small open model with LoRA on one narrow task, with an eval",
+          "where": "Karpathy remaining lectures; AI Engineering ch. 7",
+          "doneWhen": "My model beats the base model on my eval"
+        }
+      ]
+    }
+  ],
+  "tracks": {
+    "dsa": {
+      "label": "DSA",
+      "stops": [
+        {
+          "name": "Arrays & hashing",
+          "phase": 1,
+          "status": "current"
+        },
+        {
+          "name": "Two pointers",
+          "phase": 1,
+          "status": "next"
+        },
+        {
+          "name": "Sliding window",
+          "phase": 1,
+          "status": "next"
+        },
+        {
+          "name": "Stack",
+          "phase": 1,
+          "status": "next"
+        },
+        {
+          "name": "Binary search",
+          "phase": 1,
+          "status": "next"
+        },
+        {
+          "name": "Linked list",
+          "phase": 1,
+          "status": "next"
+        },
+        {
+          "name": "Trees",
+          "phase": 2,
+          "status": "next"
+        },
+        {
+          "name": "Heaps",
+          "phase": 2,
+          "status": "next"
+        },
+        {
+          "name": "Backtracking",
+          "phase": 2,
+          "status": "next"
+        },
+        {
+          "name": "Graphs",
+          "phase": 2,
+          "status": "next"
+        },
+        {
+          "name": "Greedy",
+          "phase": 2,
+          "status": "next"
+        },
+        {
+          "name": "1-D DP",
+          "phase": 3,
+          "status": "next"
+        },
+        {
+          "name": "2-D DP",
+          "phase": 3,
+          "status": "next"
+        },
+        {
+          "name": "Advanced graphs",
+          "phase": 3,
+          "status": "next"
+        },
+        {
+          "name": "Weak spots",
+          "phase": 4,
+          "status": "next"
+        },
+        {
+          "name": "Timed sets",
+          "phase": 4,
+          "status": "next"
+        }
+      ]
+    },
+    "systems": {
+      "label": "Databases & system design",
+      "stops": [
+        {
+          "name": "SQL 50",
+          "phase": 1,
+          "status": "next"
+        },
+        {
+          "name": "Indexes",
+          "phase": 2,
+          "status": "next"
+        },
+        {
+          "name": "Transactions",
+          "phase": 2,
+          "status": "next"
+        },
+        {
+          "name": "Recovery",
+          "phase": 2,
+          "status": "next"
+        },
+        {
+          "name": "Caching",
+          "phase": 3,
+          "status": "next"
+        },
+        {
+          "name": "Sharding",
+          "phase": 3,
+          "status": "next"
+        },
+        {
+          "name": "Queues",
+          "phase": 3,
+          "status": "next"
+        },
+        {
+          "name": "Weekly designs",
+          "phase": 3,
+          "status": "next"
+        },
+        {
+          "name": "Mock loops",
+          "phase": 4,
+          "status": "next"
+        },
+        {
+          "name": "OO design",
+          "phase": 4,
+          "status": "next"
+        }
+      ]
+    },
+    "ai": {
+      "label": "AI engineering",
+      "stops": [
+        {
+          "name": "How LLMs work",
+          "phase": 1,
+          "status": "current"
+        },
+        {
+          "name": "Reliable output",
+          "phase": 1,
+          "status": "next"
+        },
+        {
+          "name": "Retrieval",
+          "phase": 1,
+          "status": "next"
+        },
+        {
+          "name": "Evals",
+          "phase": 1,
+          "status": "next"
+        },
+        {
+          "name": "Agents & tools",
+          "phase": 2,
+          "status": "next"
+        },
+        {
+          "name": "Prompt injection",
+          "phase": 2,
+          "status": "next"
+        },
+        {
+          "name": "Cost & latency",
+          "phase": 2,
+          "status": "next"
+        },
+        {
+          "name": "Transformers",
+          "phase": 2,
+          "status": "next"
+        },
+        {
+          "name": "Fine-tuning",
+          "phase": 3,
+          "status": "next"
+        },
+        {
+          "name": "Inference",
+          "phase": 3,
+          "status": "next"
+        },
+        {
+          "name": "AI architecture",
+          "phase": 3,
+          "status": "next"
+        },
+        {
+          "name": "LoRA project",
+          "phase": 4,
+          "status": "next"
+        }
+      ]
+    }
+  },
+  "jobGates": [
+    {
+      "date": "2026-12-01",
+      "label": "Start applying: AI engineer roles at startups",
+      "short": "Apply: AI startups"
+    },
+    {
+      "date": "2027-05-01",
+      "label": "Add SDE roles at mid-size product companies",
+      "short": "Add SDE roles"
+    },
+    {
+      "date": "2027-09-01",
+      "label": "Bigger companies and top-paying remote roles",
+      "short": "Bigger companies"
+    }
+  ],
+  "rules": [
+    {
+      "title": "No AI for the first 30 minutes of any problem.",
+      "body": "No Claude, no Copilot, no autocomplete. Pen and paper first, then code."
+    },
+    {
+      "title": "Stuck after 30 minutes? A hint, never the answer.",
+      "body": "Still stuck after 45: read the solution, close it, write it from memory."
+    },
+    {
+      "title": "Python only.",
+      "body": "collections (Counter, deque, defaultdict), heapq, bisect, sorting with key=."
+    },
+    {
+      "title": "One line after every problem.",
+      "body": "The pattern and the trick, in my own words. That line is what I review later."
+    },
+    {
+      "title": "Re-solve on day 1, 3, 7 and 21.",
+      "body": "A problem counts as learned only after the day-21 re-solve passes in under 25 minutes."
+    },
+    {
+      "title": "Say it out loud.",
+      "body": "Interviews grade the thinking, not just the code."
+    }
+  ],
+  "dayTypes": [
+    {
+      "name": "Minimum",
+      "time": "30–40 min",
+      "what": "1 new problem or 2 re-solves, plus 5 min of flashcards"
+    },
+    {
+      "name": "Normal",
+      "time": "60–90 min",
+      "what": "2 new problems, re-solves due today, 20 min of theory"
+    },
+    {
+      "name": "Big",
+      "time": "2–3 h",
+      "what": "A new topic, 3–4 problems, one AI or design chapter, one learning post"
+    }
+  ]
+}

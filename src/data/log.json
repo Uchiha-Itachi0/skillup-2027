@@ -1,0 +1,7 @@
+[
+  { "date": "2026-10-08", "kind": "problem", "title": "Contains Duplicate", "detail": "3 min, no hints" },
+  { "date": "2026-10-08", "kind": "problem", "title": "Valid Anagram", "detail": "5 min, no hints" },
+  { "date": "2026-10-08", "kind": "problem", "title": "Two Sum", "detail": "No hints" },
+  { "date": "2026-10-08", "kind": "anki", "title": "Started a DSA flashcard deck", "detail": "3 cards" },
+  { "date": "2026-10-09", "kind": "resolve", "title": "Two Sum, day 1", "detail": "One-pass version, passed, no hints" }
+]

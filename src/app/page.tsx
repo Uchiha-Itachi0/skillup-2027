@@ -1,103 +1,147 @@
-import Image from "next/image";
+import Link from "next/link";
+import MetroMap from "@/components/MetroMap";
+import Heatmap from "@/components/Heatmap";
+import {
+  ai,
+  currentPhase,
+  daysBetween,
+  dueResolves,
+  fmt,
+  journal,
+  nextProblems,
+  profile,
+  streak,
+  todayIST,
+  TRACK_LABEL,
+  weekScore,
+} from "@/lib/data";
+
+export const revalidate = 3600;
+
+function Stat({ n, of, label, pct }: { n: number; of?: string; label: string; pct: number }) {
+  return (
+    <div>
+      <div className="n">
+        {n}
+        {of && <small> / {of}</small>}
+      </div>
+      <div className="k">{label}</div>
+      <div className="bar" aria-hidden="true">
+        <i style={{ width: `${Math.min(100, Math.round(pct * 100))}%` }} />
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const today = todayIST();
+  const day = daysBetween(profile.start, today) + 1;
+  const total = daysBetween(profile.start, profile.goalDate) + 1;
+  const phase = currentPhase(today);
+  const w = weekScore(today);
+  const due = dueResolves(today);
+  const next = nextProblems(2);
+  const aiNow = ai.path.find((p) => p.status === "current");
+  const s = streak(today);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <>
+      <h1>Learning to pass interviews without AI.</h1>
+      <p className="lede">{profile.why}</p>
+      <div className="hero-meta">
+        <span>
+          Day <b>{day}</b> of {total}
+        </span>
+        <span>
+          Phase {phase.id}, <b>{phase.name}</b>, until {fmt(phase.end)}
+        </span>
+        <span>
+          Streak <b>{s} {s === 1 ? "day" : "days"}</b>
+        </span>
+      </div>
+
+      <MetroMap today={today} />
+
+      <section>
+        <h2>This week</h2>
+        <p className="sub">
+          {fmt(w.from)} to {fmt(w.to)}. Targets come from the plan: 5 learning days, 4 to 8 new problems, every re-solve on
+          time, 2 theory sessions, 2 learning posts.
+        </p>
+        <div className="score">
+          <Stat n={w.learningDays} of="5" label="Learning days" pct={w.learningDays / 5} />
+          <Stat n={w.newProblems} of="4–8" label="New problems" pct={w.newProblems / 4} />
+          <Stat
+            n={w.resolvesPassed}
+            of={String(w.resolvesDue)}
+            label="Re-solves passed"
+            pct={w.resolvesDue ? w.resolvesPassed / w.resolvesDue : 0}
+          />
+          <Stat n={w.theory} of="2" label="Theory sessions" pct={w.theory / 2} />
+          <Stat n={w.posts} of="2" label="Learning posts" pct={w.posts / 2} />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      <section className="cols">
+        <div>
+          <h2>Up next</h2>
+          <p className="sub">Re-solves first, on a blank file with a timer.</p>
+          <ul className="todo sheet">
+            {due.map(({ problem, r }) => (
+              <li key={problem.name + r.key}>
+                <span className="box due" aria-hidden="true" />
+                <div>
+                  <a href={problem.url}>{problem.name}</a>, day {r.key.slice(1)} re-solve
+                  <div className="meta">
+                    {r.state === "overdue" ? `Was due ${fmt(r.due)}` : <span className="mark">Due today</span>}
+                  </div>
+                </div>
+              </li>
+            ))}
+            {next.map((p) => (
+              <li key={p.name}>
+                <span className="box" aria-hidden="true" />
+                <div>
+                  <a href={p.url}>{p.name}</a>
+                  <div className="meta">New problem in {p.group}</div>
+                </div>
+              </li>
+            ))}
+            {aiNow && (
+              <li>
+                <span className="box" aria-hidden="true" />
+                <div>
+                  <Link href="/ai">{aiNow.learn}</Link>
+                  <div className="meta">AI engineering, until {fmt(aiNow.to)}</div>
+                </div>
+              </li>
+            )}
+          </ul>
+        </div>
+        <div>
+          <h2>Latest notes</h2>
+          <p className="sub">
+            What clicked, in my own words. <Link href="/journal">All notes</Link>
+          </p>
+          <ul className="entries">
+            {journal.slice(0, 3).map((e) => (
+              <li key={e.date + e.title} style={{ padding: "14px 0", borderTop: "1px solid var(--line)" }}>
+                <div className="small">
+                  <span className={`dot ${e.track}`} />
+                  {TRACK_LABEL[e.track]}, {fmt(e.date)}
+                </div>
+                <h3 style={{ marginTop: 4 }}>{e.title}</h3>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Every day, start to finish</h2>
+        <p className="sub">One square per day until the end of 2027. Darker squares mean more got done that day.</p>
+        <Heatmap today={today} />
+      </section>
+    </>
   );
 }
