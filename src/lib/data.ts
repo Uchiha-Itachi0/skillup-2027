@@ -1,3 +1,4 @@
+import { fd } from "@/lib/fmt";
 import profile from "@/data/profile.json";
 import plan from "@/data/plan.json";
 import dsa from "@/data/dsa.json";
@@ -44,8 +45,8 @@ export function daysBetween(a: string, b: string): number {
   return Math.round((toTime(b) - toTime(a)) / DAY);
 }
 
-export function fmt(d: string, opts: Intl.DateTimeFormatOptions = { day: "numeric", month: "short" }): string {
-  return new Date(toTime(d)).toLocaleDateString("en-GB", { ...opts, timeZone: "UTC" });
+export function fmt(d: string): string {
+  return fd(d);
 }
 
 /** Monday of the week containing d. */
@@ -148,5 +149,45 @@ export function currentPhase(today: string) {
 export function activityByDay(): Map<string, number> {
   const m = new Map<string, number>();
   for (const e of log) m.set(e.date, (m.get(e.date) ?? 0) + 1);
+  return m;
+}
+
+export type ProblemState = "todo" | "solved" | "due" | "learned";
+
+export function problemState(name: string, today: string): ProblemState {
+  const p = dsa.log.find((x) => x.name === name);
+  if (!p) return "todo";
+  if (isLearned(p)) return "learned";
+  return resolveStates(p, today).some((r) => r.state === "due" || r.state === "overdue") ? "due" : "solved";
+}
+
+/** Per NeetCode group: its problems (if listed) with their state, and done/total counts. */
+export function groupProgress(today: string) {
+  const out: Record<string, { name: string; problems: { name: string; url: string; state: ProblemState }[]; total: number; done: number }> = {};
+  for (const g of GROUPS) {
+    const problems = (g.problems ?? []).map((p) => ({ ...p, state: problemState(p.name, today) }));
+    out[g.name] = {
+      name: g.name,
+      problems,
+      total: g.problems?.length ?? g.count ?? 0,
+      done: problems.filter((p) => p.state !== "todo").length,
+    };
+  }
+  return out;
+}
+
+/** Weekly scores for every week from the start to the current week. */
+export function allWeeks(today: string) {
+  const weeks = [];
+  for (let w = weekStart(profile.start); w <= today; w = addDays(w, 7)) {
+    weeks.push(weekScore(w <= today && addDays(w, 6) >= today ? today : addDays(w, 6)));
+  }
+  return weeks;
+}
+
+/** Log entries grouped by day. */
+export function entriesByDay() {
+  const m: Record<string, { kind: string; title: string; detail: string }[]> = {};
+  for (const e of log) (m[e.date] ??= []).push({ kind: e.kind, title: e.title, detail: e.detail });
   return m;
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ai, fmt } from "@/lib/data";
+import AiPath from "@/components/AiPath";
+import { ai } from "@/lib/data";
 
 export const revalidate = 3600;
 export const metadata: Metadata = { title: "AI engineering · Skill-up 2027" };
@@ -15,7 +16,7 @@ export default function AiPage() {
         <p className="sub">One video for the base, one book in order, one project that keeps growing.</p>
         <div className="spine">
           {ai.spine.map((s) => (
-            <div className="sheet" key={s.title}>
+            <div className="panel" key={s.title}>
               <div className="kind">{s.kind}</div>
               <h3 style={{ marginTop: 6 }}>{s.url ? <a href={s.url}>{s.title}</a> : s.title}</h3>
               <div className="small">{s.by}</div>
@@ -31,28 +32,7 @@ export default function AiPage() {
           Each block ends with one interview question I should be able to answer out loud, using my own project and
           numbers.
         </p>
-        <ol className="path">
-          {ai.path.map((p) => (
-            <li key={p.from} className={p.status}>
-              <div className="when">
-                {fmt(p.from)} – {fmt(p.to)}
-                {p.status === "current" && (
-                  <>
-                    {" "}
-                    <span className="mark">Now</span>
-                  </>
-                )}
-              </div>
-              <dl>
-                <dt>Learn</dt>
-                <dd>{p.learn}</dd>
-                <dt>Build</dt>
-                <dd>{p.build}</dd>
-              </dl>
-              <div className="q">{p.question}</div>
-            </li>
-          ))}
-        </ol>
+        <AiPath steps={ai.path} />
       </section>
 
       <section>

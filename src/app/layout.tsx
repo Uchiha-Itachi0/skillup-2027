@@ -27,9 +27,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <footer>
           <div className="wrap">
             <span>{profile.name}, learning in public.</span>
-            <span>
-              <a href={profile.x}>X</a> · <a href={profile.github}>GitHub</a> · <a href={profile.linkedin}>LinkedIn</a>
-            </span>
+            <nav aria-label="Profiles">
+              <a href={profile.x}>X</a>
+              <a href={profile.github}>GitHub</a>
+              <a href={profile.linkedin}>LinkedIn</a>
+            </nav>
           </div>
         </footer>
       </body>

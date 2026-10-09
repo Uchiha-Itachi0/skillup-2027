@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { fmt, journal, TRACK_LABEL } from "@/lib/data";
+import JournalList from "@/components/JournalList";
+import { journal } from "@/lib/data";
 
 export const revalidate = 3600;
 export const metadata: Metadata = { title: "Journal · Skill-up 2027" };
@@ -13,23 +14,7 @@ export default function JournalPage() {
         understood it.
       </p>
       <section>
-        <ul className="entries sheet" style={{ padding: "4px 24px" }}>
-          {journal.map((e) => (
-            <li className="entry" key={e.date + e.title}>
-              <div className="when">
-                {fmt(e.date, { day: "numeric", month: "short", year: "numeric" })}
-                <div className="tag">
-                  <span className={`dot ${e.track}`} />
-                  {TRACK_LABEL[e.track]}
-                </div>
-              </div>
-              <div>
-                <h3>{e.title}</h3>
-                <p>{e.body}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <JournalList entries={journal} />
       </section>
     </>
   );

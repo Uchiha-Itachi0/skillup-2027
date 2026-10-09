@@ -1,5 +1,6 @@
+import { fd } from "@/lib/fmt";
 import type { Metadata } from "next";
-import { fmt, plan, todayIST, TRACK_LABEL } from "@/lib/data";
+import { plan, todayIST, TRACK_LABEL } from "@/lib/data";
 
 export const revalidate = 3600;
 export const metadata: Metadata = { title: "Plan · Skill-up 2027" };
@@ -23,10 +24,10 @@ export default function PlanPage() {
                 <div className="num">{p.id}</div>
                 <h2 style={{ marginTop: 8 }}>{p.name}</h2>
                 <div className="dates">
-                  {fmt(p.start, { day: "numeric", month: "short", year: "numeric" })} –{" "}
-                  {fmt(p.end, { day: "numeric", month: "short", year: "numeric" })}
+                  {fd(p.start, "dmy")} –{" "}
+                  {fd(p.end, "dmy")}
                 </div>
-                {state === "now" && <span className="now mark">Current phase</span>}
+                {state === "now" && <div className="now"><span className="due-pill">Current phase</span></div>}
               </div>
               <div>
                 <p style={{ margin: 0, fontSize: 18 }}>{p.goal}</p>
@@ -70,7 +71,7 @@ export default function PlanPage() {
         <p className="sub">Pick one each morning by how much time there is. Even a minimum day keeps the streak.</p>
         <div className="daytypes">
           {plan.dayTypes.map((d) => (
-            <div className="sheet" key={d.name}>
+            <div className="panel" key={d.name}>
               <h3>{d.name}</h3>
               <div className="small">{d.time}</div>
               <p style={{ margin: "8px 0 0" }}>{d.what}</p>
@@ -81,13 +82,13 @@ export default function PlanPage() {
 
       <section>
         <h2>When the job search widens</h2>
-        <ul className="todo sheet">
+        <ul className="todo panel">
           {plan.jobGates.map((g) => (
             <li key={g.date}>
               <span className="box" aria-hidden="true" />
               <div>
                 {g.label}
-                <div className="meta">From {fmt(g.date, { month: "long", year: "numeric" })}</div>
+                <div className="meta">From {fd(g.date, "MY")}</div>
               </div>
             </li>
           ))}
